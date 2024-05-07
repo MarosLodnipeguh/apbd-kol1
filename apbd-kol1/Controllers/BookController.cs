@@ -39,8 +39,7 @@ public class BookController : ControllerBase
         var id = await _bookRepository.AddBook(newBookDTO);
 
         var authors = await _bookRepository.GetBookAuthors(id);
-
-
-        return Created("api/books/" + id, $"Book with id = {id} has been added: " + authors.title);
+        
+        return Created("api/books/" + id, $"Book with id = {id} has been added: ");
     }
 }

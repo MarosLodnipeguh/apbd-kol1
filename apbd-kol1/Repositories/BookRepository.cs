@@ -42,10 +42,8 @@ public class BookRepository : IBookRepository
         await connection.OpenAsync();
         
         var reader = await command.ExecuteReaderAsync();
-
         
         var title = reader.GetOrdinal("title");
-
         string titl = reader.GetString(title);
 
         return titl;
@@ -78,8 +76,19 @@ public class BookRepository : IBookRepository
             });
         }
 
-        var title = GetBookTitle(id);
-        var book = new BookDTO() { id = id, title = "todo" , authors = authors};
+        // get title
+        // command.Parameters.Clear();
+        // command.Connection = connection;
+        // command.CommandText = "SELECT title FROM books WHERE PK = @id";
+        // command.Parameters.AddWithValue("@Id", id);
+        //
+        // await connection.OpenAsync();
+        //
+        // reader = await command.ExecuteReaderAsync();
+        // var title = reader.GetOrdinal("title");
+        // string titleStr = reader.GetString(title);
+        
+        var book = new BookDTO() { id = id, title = "titleStr" , authors = authors};
         
         return book;
     }
